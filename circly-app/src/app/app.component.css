@@ -1,0 +1,17 @@
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.menu_container {
+  width: 100px;
+  height: 60px;
+  background: gray;
+  position: relative;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
