@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "gcloud app deploy",
-    "precache": "sw-precache --verbose --config=sw-precache-config.js"
+    "precache": "sw-precache --verbose --config=sw-precache-config.js",
+    "deploy": "ng build --prod && npm run precache && gcloud app deploy --quiet"
   },
   "private": true,
   "dependencies": {
