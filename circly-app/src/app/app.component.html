@@ -1,29 +1,17 @@
-<md-sidenav-container fullscreen>
-  <md-sidenav #start>
-    <md-nav-list>
-        <md-list-item>
-          <md-icon class="toolbar-icon">home</md-icon> Home
-        </md-list-item>
-      <md-list-item>
-        <md-icon>list</md-icon> Your Lists
-      </md-list-item>
-      <md-list-item>
-        <md-icon>settings</md-icon> Settings
-      </md-list-item>
-    </md-nav-list>
-  </md-sidenav>
-  <div>
     <md-toolbar color="primary">
-      <button md-icon-button (click)="start.toggle()">
-        <md-icon>menu</md-icon>
-      </button>
+        <button md-icon-button mdTooltip="Home">
+          <img src="assets/icons/logo.svg">
+        </button>
       <div class="flex-auto"></div>
-      <a>Circly</a>
+      <button md-icon-button mdTooltip="New List">
+        <md-icon>library_add</md-icon>
+      </button>
       <div class="flex-auto"></div>
       <button md-icon-button mdTooltip="Your Profile">
         <md-icon>account_circle</md-icon>
       </button>
+      <button md-icon-button mdTooltip="Settings">
+        <md-icon>settings</md-icon>
+      </button>
     </md-toolbar>
     <div class="main-content"></div>
-  </div>
-</md-sidenav-container>
