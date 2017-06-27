@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.png",
-        "manifests.json"
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
