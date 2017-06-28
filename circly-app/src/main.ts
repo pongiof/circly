@@ -5,16 +5,16 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
-  enableProdMode();
+	enableProdMode();
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .then(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/service-worker.js')
-        .then(registration => console.log(
-            'SW registration successful with scope: ', registration.scope));
-    }
-  })
-  .catch(err => console.error(err));
+	.then(() => {
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('/service-worker.js')
+				.then(registration => console.log(
+					'SW registration successful with scope: ', registration.scope));
+		}
+	})
+	.catch(err => console.error(err));

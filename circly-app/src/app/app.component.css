@@ -3,5 +3,8 @@
 }
 
 .toolbar {
-    position: fixed;
+  box-shadow: 0 0 10px #9e9e9e;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }

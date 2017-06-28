@@ -1,31 +1,30 @@
 {
-  "name": "Circly",
-  "short_name": "Circly",
-  "icons": [
-    {
-      "src": "assets/icons/logo-128x128.png",
-      "sizes": "128x128",
-      "type": "image\/png"
-    },
-    {
-      "src": "assets/icons/logo-144x144.png",
-      "sizes": "144x144",
-      "type": "image\/png"
-    },
-    {
-      "src": "assets/icons/logo-256x256.png",
-      "sizes": "256x256",
-      "type": "image\/png"
-    },
-    {
-      "src": "assets/icons/logo-512x512.png",
-      "sizes": "512x512",
-      "type": "image\/png"
-    }
-  ],
-  "theme_color": "#b92b27",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "portrait",
-  "start_url": "./?utm_source=web_app_manifest"
+	"name": "Circly",
+	"short_name": "Circly",
+	"icons": [{
+			"src": "assets/icons/logo-128x128.png",
+			"sizes": "128x128",
+			"type": "image\/png"
+		},
+		{
+			"src": "assets/icons/logo-144x144.png",
+			"sizes": "144x144",
+			"type": "image\/png"
+		},
+		{
+			"src": "assets/icons/logo-256x256.png",
+			"sizes": "256x256",
+			"type": "image\/png"
+		},
+		{
+			"src": "assets/icons/logo-512x512.png",
+			"sizes": "512x512",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#b92b27",
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"orientation": "portrait",
+	"start_url": "./?utm_source=web_app_manifest"
 }

@@ -8,15 +8,15 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    MaterialModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent
+	],
+	imports: [
+		BrowserAnimationsModule,
+		BrowserModule,
+		MaterialModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
