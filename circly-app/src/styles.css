@@ -2,8 +2,14 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'assets/css/material-icons.css';
-
-body {
+html, body, .viewport {
   width: 100%;
-  margin: 0px;
+  height: 100%;
+  margin: 0;
+}
+
+.main-content {
+  padding-top: 65px;
+  width: 100%;
+  height: 100%;
 }
