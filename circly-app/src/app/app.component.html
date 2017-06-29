@@ -1,7 +1,7 @@
 <md-toolbar class="toolbar" color="primary">
-  <button (click)="showLoadingIndicator=!showLoadingIndicator" md-icon-button mdTooltip="Home">
+  <button md-icon-button mdTooltip="Home">
           <img src="assets/icons/logo.svg">
-        </button>
+</button>
   <div class="flex-auto"></div>
   <button md-icon-button mdTooltip="New List">
         <md-icon>library_add</md-icon>
@@ -14,6 +14,5 @@
         <md-icon>settings</md-icon>
       </button>
 </md-toolbar>
-<div class="main-content">
-  <loading-indicator *ngIf="showLoadingIndicator"></loading-indicator>
-</div>
+
+<home-component></home-component>
