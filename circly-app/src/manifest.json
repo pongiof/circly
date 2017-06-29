@@ -22,8 +22,8 @@
 			"type": "image\/png"
 		}
 	],
-	"theme_color": "#b92b27",
-	"background_color": "#ffffff",
+	"theme_color": "#3f51b5",
+	"background_color": "#3f51b5",
 	"display": "standalone",
 	"orientation": "portrait",
 	"start_url": "./?utm_source=web_app_manifest"

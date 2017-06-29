@@ -11,8 +11,8 @@ import { AddComponent } from './add.component';
         AddComponent
 	],
 	imports: [
-        FlexLayoutModule,
         AddRoutingModule,
+        FlexLayoutModule,
 		MaterialModule,
 	],
 })

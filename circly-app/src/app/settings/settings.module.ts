@@ -13,11 +13,9 @@ import { SettingsComponent } from './settings.component';
     ],
 	imports: [
         FlexLayoutModule,
-        SettingsRoutingModule,
 		MaterialModule,
+        SettingsRoutingModule,
 	],
-    exports: [
-    ]
 })
 export class SettingsModule {
 }
