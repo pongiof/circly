@@ -2,8 +2,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
-import { HomeComponent } from './home.component';
+import { HomeRoutingModule } from './home-routing.module';
 import { SharedComponentsModule } from '../shared/components/shared-components.module'
+
+import { HomeComponent } from './home.component';
 
 @NgModule({
 	declarations: [
@@ -11,6 +13,7 @@ import { SharedComponentsModule } from '../shared/components/shared-components.m
 	],
 	imports: [
         FlexLayoutModule,
+        HomeRoutingModule,
 		MaterialModule,
         SharedComponentsModule
 	],

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { fadeInAnimation } from '../shared/animations/fade.animations';
 
 @Component({
-	selector: 'home-component',
-	styleUrls: ['./home.component.css'],
+	selector: 'settings-component',
+	styleUrls: ['./settings.component.css'],
     animations: [fadeInAnimation],
-	templateUrl: './home.component.html'
+	templateUrl: './settings.component.html'
 })
-export class HomeComponent { }
+export class SettingsComponent { }
