@@ -2,19 +2,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
-import { AddRoutingModule } from './add-routing.module';
+import { LoginRoutingModule } from './login-routing.module';
 
-import { AddComponent } from './add.component';
+import { LoginComponent } from './login.component';
 
 @NgModule({
 	declarations: [
-        AddComponent
+        LoginComponent
 	],
 	imports: [
-        AddRoutingModule,
+        LoginRoutingModule,
         FlexLayoutModule,
 		MaterialModule,
 	],
 })
-export class AddModule {
+export class LoginModule {
 }

@@ -8,12 +8,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
-
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', loadChildren: './home/home.module#HomeModule' },
-    { path: 'add', loadChildren: './add/add.module#AddModule' },
-    { path: 'settings', loadChildren: './settings/settings.module#SettingsModule' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', loadChildren: './login/login.module#LoginModule' },
+    { path: 'main', loadChildren: './main/main.module#MainModule' },
 ];
 
 @NgModule({

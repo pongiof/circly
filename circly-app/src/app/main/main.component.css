@@ -1,0 +1,11 @@
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  box-shadow: 0 0 10px #9e9e9e;
+  position: fixed;
+  display: block;
+  top: 0;
+  z-index: 1000;
+}
