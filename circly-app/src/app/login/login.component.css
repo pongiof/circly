@@ -1,0 +1,20 @@
+.login-container {
+    background-image: url("/assets/images/login_background.jpg");
+    background-size: cover;
+    box-shadow:inset 0 0 0 2000px rgba(63,81,181,0.6);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center
+}
+
+.login-menu {
+    border-radius: 25px;
+    background: white;
+    padding: 20px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.logo-img {
+    width: 100px;
+    height: 100px;
+}
