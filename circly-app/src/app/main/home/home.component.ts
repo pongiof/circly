@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+
 import { fadeInAnimation } from '../../shared/animations/fade.animations';
 
 import { AuthService } from '../../shared/providers/auth.service';
@@ -9,10 +11,19 @@ import { AuthService } from '../../shared/providers/auth.service';
     animations: [fadeInAnimation],
 	templateUrl: './home.component.html'
 })
-export class HomeComponent {
-    constructor(private authService: AuthService) {}
+export class HomeComponent implements OnInit {
+
+    private userDisplayName:string;
+
+    constructor(private authService: AuthService, private router: Router) {}
+
+    ngOnInit(): void {
+        this.userDisplayName = this.authService.getCurrentUser().displayName;
+    }
 
     logout(): void {
-        this.authService.loginWithGoogle();
+        this.authService.logout().then(error => {
+            this.router.navigate(["/login"]);
+        })
     }
 }

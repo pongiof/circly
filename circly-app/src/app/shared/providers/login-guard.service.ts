@@ -14,7 +14,7 @@ export class LoginAuthGuard implements CanLoad {
 
     canLoad(): Observable<boolean> {
         console.log("login guard");
-        return this.authService.isUserLoggedIn().map(auth => {
+        return this.authService.isUserLoggedInObservable().map(auth => {
             if(auth) {
                 this.router.navigate(['/main']);
                 return false;

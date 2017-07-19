@@ -13,7 +13,7 @@ export class MainAuthGuard implements CanLoad {
     constructor(private authService: AuthService, private router: Router) {}
 
     canLoad(): Observable<boolean> {
-        return this.authService.isUserLoggedIn().map(auth => {
+        return this.authService.isUserLoggedInObservable().map(auth => {
             if(!auth) {
                 this.router.navigate(['/login']);
                 return false;
