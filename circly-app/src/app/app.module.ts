@@ -10,11 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './shared/providers/auth.service';
+import { LoginAuthGuard } from './shared/providers/login-guard.service';
+import { MainAuthGuard } from './shared/providers/main-guard.service';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', loadChildren: './login/login.module#LoginModule' },
-    { path: 'main', loadChildren: './main/main.module#MainModule' },
+    { path: '', redirectTo: '/main', pathMatch: 'full' },
+    { path: 'login', loadChildren: './login/login.module#LoginModule', canLoad: [LoginAuthGuard] },
+    { path: 'main', loadChildren: './main/main.module#MainModule', canLoad: [MainAuthGuard] },
 ];
 
 export const firebaseConfig = {
@@ -39,7 +41,9 @@ export const firebaseConfig = {
         RouterModule.forRoot(appRoutes),
 	],
 	providers: [
-        AuthService
+        AuthService,
+        LoginAuthGuard,
+        MainAuthGuard,
     ],
 	bootstrap: [AppComponent]
 })

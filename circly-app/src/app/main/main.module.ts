@@ -23,6 +23,5 @@ import { MainComponent } from './main.component';
         MainRoutingModule,
         SharedComponentsModule
 	],
-	providers: [],
 })
 export class MainModule { }

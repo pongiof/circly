@@ -6,17 +6,19 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
-    user: Observable<firebase.User>;
+    constructor(private afAuth: AngularFireAuth) {}
 
-    constructor(public afAuth: AngularFireAuth) {
-        this.user = afAuth.authState;
+    loginWithGoogle(): void {
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }
 
-    loginWithGoogle() {
-        return this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    isUserLoggedIn(): Observable<boolean> {
+        return this.afAuth.authState.
+            map((authState:firebase.User) => !!authState).
+            first();
     }
 
-    logout() {
-      this.afAuth.auth.signOut();
+    logout(): void {
+        this.afAuth.auth.signOut();
     }
 }

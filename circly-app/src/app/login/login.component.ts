@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../shared/providers/auth.service';
 
@@ -9,11 +8,9 @@ import { AuthService } from '../shared/providers/auth.service';
 	templateUrl: './login.component.html'
 })
 export class LoginComponent {
-     constructor(public authService: AuthService, private router:Router) {}
+     constructor(private authService: AuthService) {}
 
-     login() {
-         this.authService.loginWithGoogle().then((data) => {
-             this.router.navigate(['main']);
-         })
+     login(): void {
+         this.authService.loginWithGoogle();
      }
 }

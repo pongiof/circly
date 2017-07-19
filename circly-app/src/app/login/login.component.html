@@ -1,10 +1,11 @@
-<div class="login-container" fxFill fxLayout="column" fxLayoutAlign="center center">
-    <div class="login-menu">
-        <img class="logo-img" src="assets/icons/logo.svg">
-        <div>
-            <button (click)="login()" md-icon-button mdTooltip="go">
-            LOGIN WITH GOOGLE
-            </button>
-        </div>
+<div class="login-container" fxLayout="column" fxFlexFill fxLayoutAlign="center center">
+    <div class="login-menu" fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="space-between center">
+            <div>
+                <h1> Circly </h1>
+                <img width="80" height="80" src="../assets/icons/logo.svg">
+            </div>
+            <div class="login-button" (click)="login()">
+                <img width="191" height="46" src="../assets/images/sign_google.png">
+            </div>
     </div>
 </div>

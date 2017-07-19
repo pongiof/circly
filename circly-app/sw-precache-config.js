@@ -10,6 +10,7 @@ module.exports = {
     root: 'dist',
     stripPrefix: 'dist/',
     navigateFallback: '/index.html',
+    navigateFallbackWhitelist: [ /^\/main\//, /^\/login/ ],
     runtimeCaching: [{
         urlPattern: /\/api\//,
         handler: 'networkFirst'
