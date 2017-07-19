@@ -13,7 +13,7 @@ import { AuthService } from '../../shared/providers/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-    private userDisplayName:string;
+    public userDisplayName:string;
 
     constructor(private authService: AuthService, private router: Router) {}
 

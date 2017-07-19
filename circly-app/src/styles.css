@@ -2,6 +2,7 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'assets/css/material-icons.css';
+
 html, body, .viewport {
   width: 100%;
   height: 100%;
@@ -10,4 +11,11 @@ html, body, .viewport {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.loading-app-indicator {
+    padding-top: 50px;
+    display: block;
+    margin: auto;
+    width: 40%;
 }
