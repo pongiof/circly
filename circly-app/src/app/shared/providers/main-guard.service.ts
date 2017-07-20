@@ -1,3 +1,4 @@
+import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/map';
 
 import { Injectable }     from '@angular/core';
