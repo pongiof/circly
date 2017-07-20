@@ -12,7 +12,7 @@ export class LoginAuthGuard implements CanLoad {
 
     constructor(public authService: AuthService, private router: Router) {}
 
-    public canLoad(): Observable<boolean> {
+    canLoad(): Observable<boolean> {
         console.log("login guard");
         return this.authService.isUserLoggedInObservable().map(auth => {
             if(auth) {

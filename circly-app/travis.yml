@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+  - "8.2"
+
+branches:
+  only:
+    - master
+
+before_install:
+    - cd circly-app
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install -g @angular/cli
+  - npm install -g sw-precache
+
+script:
+  - ng build --prod
+  - npm run precache
+
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
