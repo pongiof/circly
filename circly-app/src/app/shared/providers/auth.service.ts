@@ -14,11 +14,11 @@ export class AuthService {
         })
     }
 
-    loginWithGoogle(): void {
+    public loginWithGoogle(): void {
         this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     }
 
-    isUserLoggedIn(): boolean {
+    public isUserLoggedIn(): boolean {
         return !!this.currentUser;
     }
 
