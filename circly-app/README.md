@@ -1,1 +1,1 @@
-# Circly App source code.
+# Circly Web/Mobile app source code.
