@@ -20,7 +20,7 @@ script:
   - npm run precache
 
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
 
 notifications:
   email:
