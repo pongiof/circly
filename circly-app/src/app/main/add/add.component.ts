@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { fadeInAnimation } from '../../shared/animations/fade.animations';
+import { fadeInAnimation } from '../../shared/animations/fade.animation';
 
 @Component({
 	selector: 'add-component',

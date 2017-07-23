@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
-import { fadeInAnimation } from '../../shared/animations/fade.animations';
+import { fadeInAnimation } from '../../shared/animations/fade.animation';
 
 import { AuthService } from '../../shared/providers/auth.service';
 
