@@ -1,12 +1,12 @@
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
+import "rxjs/add/operator/first";
+import "rxjs/add/operator/map";
 
-import { Injectable }     from '@angular/core';
-import { CanLoad }    from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { CanLoad } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+import { Router } from "@angular/router";
 
-import { AuthService } from '../providers/auth/auth.service';
+import { AuthService } from "../providers/auth/auth.service";
 
 @Injectable()
 export class MainAuthGuard implements CanLoad {
@@ -15,8 +15,8 @@ export class MainAuthGuard implements CanLoad {
 
     canLoad(): Observable<boolean> {
         return this.authService.isUserLoggedInObservable().map(auth => {
-            if(!auth) {
-                this.router.navigate(['/login']);
+            if (!auth) {
+                this.router.navigate(["/login"]);
                 return false;
             }
             return true;

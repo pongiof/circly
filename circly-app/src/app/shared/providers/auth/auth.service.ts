@@ -1,10 +1,10 @@
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
+import "rxjs/add/operator/first";
+import "rxjs/add/operator/map";
 
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
+import { AngularFireAuth } from "angularfire2/auth";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import * as firebase from "firebase/app";
 
 @Injectable()
 export class AuthService {
@@ -26,13 +26,13 @@ export class AuthService {
     }
 
     getCurrentUser(): firebase.User | null {
-        if (!this.isUserLoggedIn) return null;
+        if (!this.isUserLoggedIn) { return null; }
         return this.currentUser;
     }
 
     isUserLoggedInObservable(): Observable<boolean> {
         return this.afAuth.authState.
-            map((authState:firebase.User) => !!authState).
+            map((authState: firebase.User) => !!authState).
             first();
     }
 

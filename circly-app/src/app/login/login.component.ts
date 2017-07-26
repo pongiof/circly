@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { fallIn } from '../shared/animations/fall-in.animation';
+import { fallIn } from "../shared/animations/fall-in.animation";
 
-import { AuthService } from '../shared/providers/auth/auth.service';
+import { AuthService } from "../shared/providers/auth/auth.service";
 
 @Component({
-	selector: 'login-component',
-	styleUrls: ['./login.component.css'],
+    selector: "login-component",
+    styleUrls: ["./login.component.css"],
     animations: [fallIn],
-	templateUrl: './login.component.html'
+    templateUrl: "./login.component.html"
 })
 export class LoginComponent {
      constructor(private authService: AuthService) {}

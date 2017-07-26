@@ -1,23 +1,23 @@
-import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit} from "@angular/core";
+import { Router } from "@angular/router";
 
-import { fadeInAnimation } from '../../shared/animations/fade.animation';
+import { fadeInAnimation } from "../../shared/animations/fade.animation";
 
-import { AuthService } from '../../shared/providers/auth/auth.service';
-import { CollectionsService } from '../../shared/providers/data/collections.service';
+import { AuthService } from "../../shared/providers/auth/auth.service";
+import { CollectionsService } from "../../shared/providers/data/collections.service";
 
-import { model } from '../../shared/protos/model';
+import { model } from "../../shared/protos/model";
 
 
 @Component({
-	selector: 'home-component',
-	styleUrls: ['./home.component.css'],
+    selector: "home-component",
+    styleUrls: ["./home.component.css"],
     animations: [fadeInAnimation],
-	templateUrl: './home.component.html'
+    templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-    userDisplayName:string;
-    collections:model.Collection[] = [];
+    userDisplayName: string;
+    collections: model.Collection[] = [];
 
     constructor(
         private authService: AuthService,

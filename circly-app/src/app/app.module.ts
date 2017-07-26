@@ -1,24 +1,24 @@
-import 'hammerjs';
+import "hammerjs";
 
-import { AngularFireModule} from 'angularfire2';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
-import { RouterModule, Routes } from '@angular/router';
+import { AngularFireModule} from "angularfire2";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { MaterialModule } from "@angular/material";
+import { RouterModule, Routes } from "@angular/router";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
-import { AuthModule} from './shared/providers/auth/auth.module';
-import { DataModule } from './shared/providers/data/data.module';
+import { AuthModule} from "./shared/providers/auth/auth.module";
+import { DataModule } from "./shared/providers/data/data.module";
 
-import { LoginAuthGuard } from './shared/guards/login-guard.service';
-import { MainAuthGuard } from './shared/guards/main-guard.service';
+import { LoginAuthGuard } from "./shared/guards/login-guard.service";
+import { MainAuthGuard } from "./shared/guards/main-guard.service";
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/main', pathMatch: 'full' },
-    { path: 'login', loadChildren: './login/login.module#LoginModule', canLoad: [LoginAuthGuard] },
-    { path: 'main', loadChildren: './main/main.module#MainModule', canLoad: [MainAuthGuard] },
+    { path: "", redirectTo: "/main", pathMatch: "full" },
+    { path: "login", loadChildren: "./login/login.module#LoginModule", canLoad: [LoginAuthGuard] },
+    { path: "main", loadChildren: "./main/main.module#MainModule", canLoad: [MainAuthGuard] },
 ];
 
 export const firebaseConfig = {
@@ -31,21 +31,21 @@ export const firebaseConfig = {
   };
 
 @NgModule({
-	declarations: [
-		AppComponent
-	],
-	imports: [
+    declarations: [
+        AppComponent
+    ],
+    imports: [
         AngularFireModule.initializeApp(firebaseConfig),
         AuthModule,
-		BrowserAnimationsModule,
-		BrowserModule,
+        BrowserAnimationsModule,
+        BrowserModule,
         DataModule,
         RouterModule.forRoot(appRoutes),
-	],
-	providers: [
+    ],
+    providers: [
         LoginAuthGuard,
         MainAuthGuard,
     ],
-	bootstrap: [AppComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
