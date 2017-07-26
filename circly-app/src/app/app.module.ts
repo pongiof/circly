@@ -8,7 +8,10 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
 import { AuthModule} from './shared/providers/auth/auth.module';
+import { DataModule } from './shared/providers/data/data.module';
+
 import { LoginAuthGuard } from './shared/guards/login-guard.service';
 import { MainAuthGuard } from './shared/guards/main-guard.service';
 
@@ -36,6 +39,7 @@ export const firebaseConfig = {
         AuthModule,
 		BrowserAnimationsModule,
 		BrowserModule,
+        DataModule,
 		MaterialModule,
         RouterModule.forRoot(appRoutes),
 	],

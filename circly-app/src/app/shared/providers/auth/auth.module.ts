@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AuthService } from './auth.service';
 
-import { model } from '../../protos/model';
-
 @NgModule({
-	declarations: [
-        AuthService,
-	],
 	imports: [
         AngularFireAuthModule,
 	],
+    providers: [
+        AuthService
+    ]
 })
 export class AuthModule { }
