@@ -22,12 +22,12 @@ const appRoutes: Routes = [
 ];
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyBksXoQ_se1zfP2wLl2wktyDAeEO1AKlLc",
-    authDomain: "circly-b5562.firebaseapp.com",
-    databaseURL: "https://circly-b5562.firebaseio.com",
-    projectId: "circly-b5562",
-    storageBucket: "circly-b5562.appspot.com",
-    messagingSenderId: "114647567771"
+    apiKey: "AIzaSyAr3tHJHy9BtwauxmRejckPnLOmg4Sr3LQ",
+    authDomain: "circly-firebase.firebaseapp.com",
+    databaseURL: "https://circly-firebase.firebaseio.com",
+    projectId: "circly-firebase",
+    storageBucket: "",
+    messagingSenderId: "1092038257878"
   };
 
 @NgModule({
@@ -40,7 +40,6 @@ export const firebaseConfig = {
 		BrowserAnimationsModule,
 		BrowserModule,
         DataModule,
-		MaterialModule,
         RouterModule.forRoot(appRoutes),
 	],
 	providers: [

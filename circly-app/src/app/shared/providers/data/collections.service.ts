@@ -15,7 +15,7 @@ export class CollectionsService {
     constructor(private http: HttpClient) {}
 
     getAllCollections(): Observable<model.Collection> {
-        return this.http.get(constants.API_SERVER + constants.API_PREFIX + "collection")
+        return this.http.get(constants.API_SERVER + constants.API_PREFIX + "/collection")
         .mergeMap((data: Array<Object>) => { return Observable.from(data); })
         .map((data: Object) => { return model.Collection.fromObject(data); });
     }

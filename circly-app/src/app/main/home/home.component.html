@@ -1,4 +1,6 @@
 <div [@fadeInAnimation] fxFill fxLayout="column" fxLayoutAlign="center center">
   <loading-indicator></loading-indicator>
+  I received these collections:
+  {{ collections | json }}
   <button md-button (click)="logout()">LOGOUT {{userDisplayName}}</button>
 </div>

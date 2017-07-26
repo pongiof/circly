@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit {
         this.userDisplayName = this.authService.getCurrentUser()!.displayName!;
         this.collectionsService.getAllCollections().subscribe (
             (c) => {
-                console.log("got a new collection");
-                console.log(c);
+                this.collections.push(c);
             });
     }
 

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '@angular/material';
@@ -10,14 +11,14 @@ import { AddComponent } from './add/add.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
 
-
 @NgModule({
 	declarations: [
         AddComponent,
         HomeComponent,
-		MainComponent
+		MainComponent,
 	],
 	imports: [
+        CommonModule,
         FlexLayoutModule,
 		MaterialModule,
         MainRoutingModule,
