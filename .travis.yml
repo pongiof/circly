@@ -8,6 +8,7 @@ node_js:
 branches:
   only:
     - master
+    - travisGreen
 
 before_install:
     - cd circly-app
