@@ -1,5 +1,5 @@
 import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/mergemap';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 
 import { HttpClient } from '@angular/common/http';
