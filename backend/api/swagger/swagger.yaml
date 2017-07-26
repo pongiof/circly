@@ -1,0 +1,67 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Circly Backend
+host: localhost:10010
+basePath: /api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /collection:
+    get:
+      description: "Returns all the collections available"
+      operationId: "GetAllCollections"
+      parameters: []
+      responses:
+        200:
+          description: "Array of collections"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/model.Collection"
+      x-swagger-router-controller: "GetAllCollections"
+    post:
+      description: "Add a new collection"
+      operationId: "AddCollection"
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: "collection"
+          description: "The collection to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/model.Collection"
+      responses:
+        200:
+          description: "Sucessfull collection add"
+      x-swagger-router-controller: "AddCollection"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+  model.Collection:
+    title: Collection
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      created_ts_micros:
+        type: integer
+        minimum: -9007199254740991
+        maximum: 9007199254740991
+      subscriber_ids:
+        type: array
+        items:
+          type: string
+      items:
+        type: array
+        items:
+          type: string

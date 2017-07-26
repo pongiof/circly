@@ -1,0 +1,24 @@
+// model.proto
+syntax = "proto3";
+
+package model;
+
+message Collection {
+    optional string id = 1;
+    optional string name = 2;
+    optional string description = 3;
+    optional int64 created_ts_micros = 4;
+    repeated string subscriber_ids = 5;
+    repeated string items = 6;
+}
+
+message User {
+    optional string id = 1;
+}
+
+message Item {
+    optional string id = 1;
+    optional string url = 2;
+    optional int64 created_ts_micros = 3;
+    optional string author_id = 4;
+}
