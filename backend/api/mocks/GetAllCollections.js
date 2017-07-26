@@ -20,5 +20,5 @@ function GetAllCollections(req, res, next) {
     mock2.description = "simple mock collection 2"
     mock2.subscriberIds = []
 
-    res.json([mock1.toJSON(), mock2.toJSON()])
+    res.json([mock1, mock2])
 }
