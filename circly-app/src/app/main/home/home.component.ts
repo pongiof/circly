@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 
 import { fadeInAnimation } from '../../shared/animations/fade.animation';
 
-import { AuthService } from '../../shared/providers/auth.service';
+import { AuthService } from '../../shared/providers/auth/auth.service';
+
 
 @Component({
 	selector: 'home-component',
@@ -12,13 +13,12 @@ import { AuthService } from '../../shared/providers/auth.service';
 	templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
-    public userDisplayName:string;
+    userDisplayName:string;
 
     constructor(private authService: AuthService, private router: Router) {}
 
     ngOnInit(): void {
-        this.userDisplayName = this.authService.getCurrentUser().displayName;
+        this.userDisplayName = this.authService.getCurrentUser()!.displayName!;
     }
 
     logout(): void {

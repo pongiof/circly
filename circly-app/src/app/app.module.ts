@@ -1,6 +1,5 @@
 import 'hammerjs';
 
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule} from 'angularfire2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,9 +8,9 @@ import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AuthService } from './shared/providers/auth.service';
-import { LoginAuthGuard } from './shared/providers/login-guard.service';
-import { MainAuthGuard } from './shared/providers/main-guard.service';
+import { AuthModule} from './shared/providers/auth/auth.module';
+import { LoginAuthGuard } from './shared/guards/login-guard.service';
+import { MainAuthGuard } from './shared/guards/main-guard.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -33,15 +32,14 @@ export const firebaseConfig = {
 		AppComponent
 	],
 	imports: [
-        AngularFireAuthModule,
         AngularFireModule.initializeApp(firebaseConfig),
+        AuthModule,
 		BrowserAnimationsModule,
 		BrowserModule,
 		MaterialModule,
         RouterModule.forRoot(appRoutes),
 	],
 	providers: [
-        AuthService,
         LoginAuthGuard,
         MainAuthGuard,
     ],

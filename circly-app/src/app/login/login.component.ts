@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { fallIn } from '../shared/animations/fall-in.animation';
 
-import { AuthService } from '../shared/providers/auth.service';
+import { AuthService } from '../shared/providers/auth/auth.service';
 
 @Component({
 	selector: 'login-component',
