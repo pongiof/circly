@@ -16,6 +16,7 @@ import { model } from "../../shared/protos/model";
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
+    displayLoading = true;
     userDisplayName: string;
     collections: model.Collection[] = [];
 
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
         this.userDisplayName = this.authService.getCurrentUser()!.displayName!;
         this.collectionsService.getAllCollections().subscribe (
             (c) => {
+                this.displayLoading = false;
                 this.collections.push(c);
             });
     }

@@ -1,4 +1,6 @@
 import "rxjs/add/observable/from";
+import "rxjs/add/operator/concatAll"; // test only
+import "rxjs/add/operator/delay"; // test only
 import "rxjs/add/operator/mergeMap";
 import "rxjs/add/operator/map";
 
@@ -17,6 +19,8 @@ export class CollectionsService {
     getAllCollections(): Observable<model.Collection> {
         return this.http.get(constants.API_SERVER + constants.API_PREFIX + "/collection")
         .mergeMap((data: Array<Object>) => Observable.from(data))
-        .map((data: Object) => model.Collection.fromObject(data));
+        .map((data: Object) => model.Collection.fromObject(data))
+        .map((data: model.Collection) => Observable.from([data]).delay(3000)) // test only.
+        .concatAll(); // test only
     }
 }
