@@ -7,7 +7,7 @@ import { Router, Event as RouterEvent, NavigationStart, NavigationEnd, Navigatio
     styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-    loading_route = true;
+    loadingRoute = true;
 
     constructor(private router: Router) {
         router.events.subscribe((event: RouterEvent) => {
@@ -17,16 +17,16 @@ export class AppComponent {
 
     private navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
-            this.loading_route = true;
+            this.loadingRoute = true;
         }
         if (event instanceof NavigationEnd) {
-            this.loading_route = false;
+            this.loadingRoute = false;
         }
         if (event instanceof NavigationCancel) {
-            this.loading_route = false;
+            this.loadingRoute = false;
         }
         if (event instanceof NavigationError) {
-            this.loading_route = false;
+            this.loadingRoute = false;
         }
     }
 }
