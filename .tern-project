@@ -12,11 +12,6 @@
       "load": "",
       "modules": ""
     },
-    "requirejs": {
-      "baseURL": "",
-      "paths": "",
-      "override": ""
-    },
     "modules": {
       "dontLoad": "",
       "load": "",
