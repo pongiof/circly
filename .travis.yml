@@ -19,7 +19,7 @@ before_script:
   - npm install -g sw-precache
 
 script:
-  - ng build --prod
+  - ng build --prod --env=prod
   - npm run precache
 
 after_success:
