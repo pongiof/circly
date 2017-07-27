@@ -6,9 +6,5 @@
     "baseUrl": "",
     "noImplicitAny": true,
     "strictNullChecks": true
-  },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  }
 }

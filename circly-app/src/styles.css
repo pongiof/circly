@@ -4,13 +4,13 @@
 @import 'assets/css/material-icons.css';
 
 html, body, .viewport {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .loading-app-indicator {
