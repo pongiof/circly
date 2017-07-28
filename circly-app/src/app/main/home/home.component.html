@@ -1,6 +1,6 @@
 <div [@fadeInAnimation] fxFill fxLayout="column" fxLayoutAlign="center center">
-  <loading-indicator *ngIf="displayLoading"></loading-indicator>
-  I received these collections:
-  <div *ngFor="let collection of collections">{{ collection | json }}</div>
-  <button md-button (click)="logout()">LOGOUT {{userDisplayName}}</button>
+    <loading-indicator *ngIf="displayLoading"></loading-indicator>
+    I received these collections:
+    <div *ngFor="let collection of collections">{{ collection | json }}</div>
+    <button md-button (click)="logout()">LOGOUT {{userDisplayName}}</button>
 </div>
