@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
-  api_server: "http://localhost:10010"
+  api_server: "http://localhost:10010",
+  api_prefix: "/api/v1",
+  api_key: ""
 };

@@ -4,6 +4,9 @@ info:
   title: "Circly Endpoints"
   version: "1.0.0"
 host: "circly-174919.appspot.com"
+x-google-endpoints:
+- name: "circly-174919.appspot.com"
+  allowCors: "true"
 
 basePath: /api/v1
 schemes:
