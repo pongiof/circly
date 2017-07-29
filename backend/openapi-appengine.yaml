@@ -44,6 +44,15 @@ paths:
       x-swagger-router-controller: "AddCollection"
   /swagger:
     x-swagger-pipe: swagger_raw
+
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+security:
+    - api_key: []
+
 definitions:
   model.Collection:
     title: Collection

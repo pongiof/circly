@@ -3,4 +3,4 @@ env: flex
 
 endpoints_api_service:
   name: circly-174919.appspot.com
-  config_id: 2017-07-26r0
+  config_id: 2017-07-28r0
