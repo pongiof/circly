@@ -11,9 +11,12 @@ import { AuthService } from "../shared/providers/auth/auth.service";
     templateUrl: "./login.component.html"
 })
 export class LoginComponent {
-     constructor(private authService: AuthService) {}
+    displayLoading = false;
 
-     login(): void {
-         this.authService.loginWithGoogle();
+    constructor(private authService: AuthService) {}
+
+    login(): void {
+        this.displayLoading = true;
+        this.authService.loginWithGoogle();
      }
 }

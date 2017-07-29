@@ -1,8 +1,11 @@
+import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "@angular/material";
 
 import { LoginRoutingModule } from "./login-routing.module";
+
+import { SharedComponentsModule } from "../shared/components/shared-components.module"
 
 import { LoginComponent } from "./login.component";
 
@@ -12,9 +15,11 @@ import { LoginComponent } from "./login.component";
         LoginComponent
     ],
     imports: [
+        CommonModule,
         LoginRoutingModule,
         FlexLayoutModule,
         MaterialModule,
+        SharedComponentsModule
     ],
 })
 export class LoginModule {
