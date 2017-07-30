@@ -17,9 +17,9 @@ export class LoginAuthGuard implements CanLoad {
         return this.authService.isUserLoggedInObservable().map(auth => {
             if (auth) {
                 this.router.navigate(["/main"]);
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }).first();
     }
 }
