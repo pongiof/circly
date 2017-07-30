@@ -10,10 +10,12 @@ import * as firebase from "firebase/app";
 export class AuthService {
 
     private currentUser: firebase.User;
+    private jwtToken: object;
 
     constructor(private afAuth: AngularFireAuth) {
         this.afAuth.authState.subscribe(authState => {
             this.currentUser = authState;
+            authState.getIdToken(true).then((token: object) => { this.jwtToken = token; });
         })
     }
 
@@ -28,6 +30,11 @@ export class AuthService {
     getCurrentUser(): firebase.User | null {
         if (!this.isUserLoggedIn) { return null; }
         return this.currentUser;
+    }
+
+    getIdToken(): object | null {
+        if (!this.isUserLoggedIn) { return null; }
+        return this.jwtToken;
     }
 
     isUserLoggedInObservable(): Observable<boolean> {

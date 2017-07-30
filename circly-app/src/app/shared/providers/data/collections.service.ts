@@ -18,8 +18,8 @@ export class CollectionsService {
 
     getAllCollections(): Observable<model.Collection> {
         return this.http.get(environment.api_server + environment.api_prefix + "/collection")
-        .mergeMap((data: Array<Object>) => Observable.from(data))
-        .map((data: Object) => model.Collection.fromObject(data))
+        .mergeMap((data: Array<object>) => Observable.from(data))
+        .map((data: object) => model.Collection.fromObject(data))
         .map((data: model.Collection) => Observable.from([data]).delay(3000)) // test only.
         .concatAll(); // test only
     }
