@@ -14,12 +14,12 @@ export class LoginAuthGuard implements CanLoad {
     constructor(public authService: AuthService, private router: Router) {}
 
     canLoad(): Observable<boolean> {
-        return this.authService.isUserLoggedInObservable().map(auth => {
+        return this.authService.loginObservable().map(auth => {
             if (auth) {
                 this.router.navigate(["/main"]);
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }).first();
     }
 }

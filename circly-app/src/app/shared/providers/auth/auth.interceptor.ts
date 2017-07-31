@@ -9,18 +9,15 @@ import { AuthService } from "./auth.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    jwtToken: object|null;
 
-    constructor(private authService: AuthService) {
-        this.jwtToken = authService.getIdToken();
-    }
+    constructor(private authService: AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (environment.production) {
+        if (!environment.production) {
             req = req.clone(
                 {headers: req.headers
                     .set("x-api-key", environment.api_key)
-                    .set("Authorization", `Bearer ${this.jwtToken}`)}
+                    .set("Authorization", `Bearer ${this.authService.getCurrentToken()}`)}
             );
         }
         return next.handle(req);
