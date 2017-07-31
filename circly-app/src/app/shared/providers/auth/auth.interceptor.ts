@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private authService: AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!environment.production) {
+        if (environment.production) {
             req = req.clone(
                 {headers: req.headers
                     .set("x-api-key", environment.api_key)
