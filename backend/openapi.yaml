@@ -17,9 +17,9 @@ securityDefinitions:
     authorizationUrl: ""
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "https://securetoken.google.com/circly-firebase"
+    x-google-issuer: "https://securetoken.google.com/circly-174919"
     x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
-    x-google-audiences: "1092038257878-cvkcphjp3srjkmbdjfog7bd66viajfvb.apps.googleusercontent.com"
+    x-google-audiences: "circly-174919"
 security:
     - api_key: []
       firebase: []

@@ -14,7 +14,7 @@ import * as firebase from "firebase/app";
 export class AuthService {
 
     private currentUser: firebase.User;
-    private token: object;
+    private token: string;
 
     constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
@@ -29,10 +29,10 @@ export class AuthService {
     loginObservable(): Observable<boolean> {
         return this.afAuth.authState.
             switchMap((authState: firebase.User) => {
-                return !!authState ? Observable.fromPromise(authState.getIdToken(true)) :
+                return !!authState ? Observable.fromPromise(authState.getIdToken(false)) :
                     Observable.from([null]);
             })
-            .map((token: object) => {
+            .map((token: string) => {
                 this.token = token;
                 return !!token;
             });
@@ -46,7 +46,7 @@ export class AuthService {
         this.afAuth.authState.subscribe(authState => {
             this.currentUser = authState;
             if (authState) {
-                authState.getIdToken(true).then((token: object) => { this.token = token });
+                authState.getIdToken(false).then((token: string) => { this.token = token; });
             } else {
                 this.router.navigate(["/login"]);
             }
@@ -58,7 +58,7 @@ export class AuthService {
         return this.currentUser;
     }
 
-    getCurrentToken(): object | null {
+    getCurrentToken(): string | null {
         if (!this.isUserLoggedIn) { return null; }
         return this.token;
     }

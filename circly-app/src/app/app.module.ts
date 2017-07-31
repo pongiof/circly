@@ -22,12 +22,12 @@ const appRoutes: Routes = [
 ];
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyAr3tHJHy9BtwauxmRejckPnLOmg4Sr3LQ",
-    authDomain: "circly-firebase.firebaseapp.com",
-    databaseURL: "https://circly-firebase.firebaseio.com",
-    projectId: "circly-firebase",
-    storageBucket: "",
-    messagingSenderId: "1092038257878"
+    apiKey: "AIzaSyBPKCe7bYmPwP75-w67yv_k5vccyvm_i5k",
+    authDomain: "circly-174919.firebaseapp.com",
+    databaseURL: "https://circly-174919.firebaseio.com",
+    projectId: "circly-174919",
+    storageBucket: "circly-174919.appspot.com",
+    messagingSenderId: "533007460876"
   };
 
 @NgModule({
