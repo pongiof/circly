@@ -21,7 +21,7 @@ after_success:
 - cd ..
 deploy:
   provider: gae
-  keyfile: circly-7595d1781612.json.enc
+  keyfile: circly-7595d1781612.json
   project: circly-174919
   config: backend/app.yaml
 notifications:
