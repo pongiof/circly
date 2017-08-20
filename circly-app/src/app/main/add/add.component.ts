@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 import { fadeInAnimation } from "../../shared/animations/fade.animation";
 
+import { CollectionsService } from "../../shared/providers/data/collections.service";
+
+import { model } from "../../shared/protos/model";
+
+
 @Component({
     selector: "add-component",
     styleUrls: ["./add.component.css"],
@@ -12,12 +17,19 @@ import { fadeInAnimation } from "../../shared/animations/fade.animation";
 export class AddComponent {
     collectionForm: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private collectionsService: CollectionsService,
+        private fb: FormBuilder) {
         this.createForm();
     }
 
     onSubmit(): void {
-        console.log(this.collectionForm);
+        const newCollection = new model.Collection();
+        newCollection.name = this.collectionForm.get("name")!.value;
+        newCollection.description = this.collectionForm.get("description")!.value;
+        this.collectionsService.createCollection(newCollection).subscribe(createdCollection => {
+            console.log(createdCollection);
+        })
     }
 
     private createForm(): void {

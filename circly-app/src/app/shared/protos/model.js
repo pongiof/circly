@@ -27,9 +27,10 @@ $root.model = (function() {
          * @property {string} [id] Collection id
          * @property {string} [name] Collection name
          * @property {string} [description] Collection description
-         * @property {number|Long} [createdTsMicros] Collection createdTsMicros
-         * @property {Array.<string>} [subscriberIds] Collection subscriberIds
-         * @property {Array.<string>} [items] Collection items
+         * @property {string} [createdMicros] Collection createdMicros
+         * @property {string} [authorId] Collection authorId
+         * @property {Array.<string>} [subscriberId] Collection subscriberId
+         * @property {Array.<string>} [itemId] Collection itemId
          */
 
         /**
@@ -40,8 +41,8 @@ $root.model = (function() {
          * @param {model.ICollection=} [properties] Properties to set
          */
         function Collection(properties) {
-            this.subscriberIds = [];
-            this.items = [];
+            this.subscriberId = [];
+            this.itemId = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -73,28 +74,36 @@ $root.model = (function() {
         Collection.prototype.description = "";
 
         /**
-         * Collection createdTsMicros.
-         * @member {number|Long}createdTsMicros
+         * Collection createdMicros.
+         * @member {string}createdMicros
          * @memberof model.Collection
          * @instance
          */
-        Collection.prototype.createdTsMicros = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+        Collection.prototype.createdMicros = "";
 
         /**
-         * Collection subscriberIds.
-         * @member {Array.<string>}subscriberIds
+         * Collection authorId.
+         * @member {string}authorId
          * @memberof model.Collection
          * @instance
          */
-        Collection.prototype.subscriberIds = $util.emptyArray;
+        Collection.prototype.authorId = "";
 
         /**
-         * Collection items.
-         * @member {Array.<string>}items
+         * Collection subscriberId.
+         * @member {Array.<string>}subscriberId
          * @memberof model.Collection
          * @instance
          */
-        Collection.prototype.items = $util.emptyArray;
+        Collection.prototype.subscriberId = $util.emptyArray;
+
+        /**
+         * Collection itemId.
+         * @member {Array.<string>}itemId
+         * @memberof model.Collection
+         * @instance
+         */
+        Collection.prototype.itemId = $util.emptyArray;
 
         /**
          * Creates a new Collection instance using the specified properties.
@@ -126,14 +135,16 @@ $root.model = (function() {
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
             if (message.description != null && message.hasOwnProperty("description"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.description);
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                writer.uint32(/* id 4, wireType 0 =*/32).int64(message.createdTsMicros);
-            if (message.subscriberIds != null && message.subscriberIds.length)
-                for (var i = 0; i < message.subscriberIds.length; ++i)
-                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.subscriberIds[i]);
-            if (message.items != null && message.items.length)
-                for (var i = 0; i < message.items.length; ++i)
-                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.items[i]);
+            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.createdMicros);
+            if (message.authorId != null && message.hasOwnProperty("authorId"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.authorId);
+            if (message.subscriberId != null && message.subscriberId.length)
+                for (var i = 0; i < message.subscriberId.length; ++i)
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.subscriberId[i]);
+            if (message.itemId != null && message.itemId.length)
+                for (var i = 0; i < message.itemId.length; ++i)
+                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.itemId[i]);
             return writer;
         };
 
@@ -178,17 +189,20 @@ $root.model = (function() {
                     message.description = reader.string();
                     break;
                 case 4:
-                    message.createdTsMicros = reader.int64();
+                    message.createdMicros = reader.string();
                     break;
                 case 5:
-                    if (!(message.subscriberIds && message.subscriberIds.length))
-                        message.subscriberIds = [];
-                    message.subscriberIds.push(reader.string());
+                    message.authorId = reader.string();
                     break;
                 case 6:
-                    if (!(message.items && message.items.length))
-                        message.items = [];
-                    message.items.push(reader.string());
+                    if (!(message.subscriberId && message.subscriberId.length))
+                        message.subscriberId = [];
+                    message.subscriberId.push(reader.string());
+                    break;
+                case 7:
+                    if (!(message.itemId && message.itemId.length))
+                        message.itemId = [];
+                    message.itemId.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -234,22 +248,25 @@ $root.model = (function() {
             if (message.description != null && message.hasOwnProperty("description"))
                 if (!$util.isString(message.description))
                     return "description: string expected";
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                if (!$util.isInteger(message.createdTsMicros) && !(message.createdTsMicros && $util.isInteger(message.createdTsMicros.low) && $util.isInteger(message.createdTsMicros.high)))
-                    return "createdTsMicros: integer|Long expected";
-            if (message.subscriberIds != null && message.hasOwnProperty("subscriberIds")) {
-                if (!Array.isArray(message.subscriberIds))
-                    return "subscriberIds: array expected";
-                for (var i = 0; i < message.subscriberIds.length; ++i)
-                    if (!$util.isString(message.subscriberIds[i]))
-                        return "subscriberIds: string[] expected";
+            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
+                if (!$util.isString(message.createdMicros))
+                    return "createdMicros: string expected";
+            if (message.authorId != null && message.hasOwnProperty("authorId"))
+                if (!$util.isString(message.authorId))
+                    return "authorId: string expected";
+            if (message.subscriberId != null && message.hasOwnProperty("subscriberId")) {
+                if (!Array.isArray(message.subscriberId))
+                    return "subscriberId: array expected";
+                for (var i = 0; i < message.subscriberId.length; ++i)
+                    if (!$util.isString(message.subscriberId[i]))
+                        return "subscriberId: string[] expected";
             }
-            if (message.items != null && message.hasOwnProperty("items")) {
-                if (!Array.isArray(message.items))
-                    return "items: array expected";
-                for (var i = 0; i < message.items.length; ++i)
-                    if (!$util.isString(message.items[i]))
-                        return "items: string[] expected";
+            if (message.itemId != null && message.hasOwnProperty("itemId")) {
+                if (!Array.isArray(message.itemId))
+                    return "itemId: array expected";
+                for (var i = 0; i < message.itemId.length; ++i)
+                    if (!$util.isString(message.itemId[i]))
+                        return "itemId: string[] expected";
             }
             return null;
         };
@@ -272,28 +289,23 @@ $root.model = (function() {
                 message.name = String(object.name);
             if (object.description != null)
                 message.description = String(object.description);
-            if (object.createdTsMicros != null)
-                if ($util.Long)
-                    (message.createdTsMicros = $util.Long.fromValue(object.createdTsMicros)).unsigned = false;
-                else if (typeof object.createdTsMicros === "string")
-                    message.createdTsMicros = parseInt(object.createdTsMicros, 10);
-                else if (typeof object.createdTsMicros === "number")
-                    message.createdTsMicros = object.createdTsMicros;
-                else if (typeof object.createdTsMicros === "object")
-                    message.createdTsMicros = new $util.LongBits(object.createdTsMicros.low >>> 0, object.createdTsMicros.high >>> 0).toNumber();
-            if (object.subscriberIds) {
-                if (!Array.isArray(object.subscriberIds))
-                    throw TypeError(".model.Collection.subscriberIds: array expected");
-                message.subscriberIds = [];
-                for (var i = 0; i < object.subscriberIds.length; ++i)
-                    message.subscriberIds[i] = String(object.subscriberIds[i]);
+            if (object.createdMicros != null)
+                message.createdMicros = String(object.createdMicros);
+            if (object.authorId != null)
+                message.authorId = String(object.authorId);
+            if (object.subscriberId) {
+                if (!Array.isArray(object.subscriberId))
+                    throw TypeError(".model.Collection.subscriberId: array expected");
+                message.subscriberId = [];
+                for (var i = 0; i < object.subscriberId.length; ++i)
+                    message.subscriberId[i] = String(object.subscriberId[i]);
             }
-            if (object.items) {
-                if (!Array.isArray(object.items))
-                    throw TypeError(".model.Collection.items: array expected");
-                message.items = [];
-                for (var i = 0; i < object.items.length; ++i)
-                    message.items[i] = String(object.items[i]);
+            if (object.itemId) {
+                if (!Array.isArray(object.itemId))
+                    throw TypeError(".model.Collection.itemId: array expected");
+                message.itemId = [];
+                for (var i = 0; i < object.itemId.length; ++i)
+                    message.itemId[i] = String(object.itemId[i]);
             }
             return message;
         };
@@ -312,18 +324,15 @@ $root.model = (function() {
                 options = {};
             var object = {};
             if (options.arrays || options.defaults) {
-                object.subscriberIds = [];
-                object.items = [];
+                object.subscriberId = [];
+                object.itemId = [];
             }
             if (options.defaults) {
                 object.id = "";
                 object.name = "";
                 object.description = "";
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, false);
-                    object.createdTsMicros = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.createdTsMicros = options.longs === String ? "0" : 0;
+                object.createdMicros = "";
+                object.authorId = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 object.id = message.id;
@@ -331,20 +340,19 @@ $root.model = (function() {
                 object.name = message.name;
             if (message.description != null && message.hasOwnProperty("description"))
                 object.description = message.description;
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                if (typeof message.createdTsMicros === "number")
-                    object.createdTsMicros = options.longs === String ? String(message.createdTsMicros) : message.createdTsMicros;
-                else
-                    object.createdTsMicros = options.longs === String ? $util.Long.prototype.toString.call(message.createdTsMicros) : options.longs === Number ? new $util.LongBits(message.createdTsMicros.low >>> 0, message.createdTsMicros.high >>> 0).toNumber() : message.createdTsMicros;
-            if (message.subscriberIds && message.subscriberIds.length) {
-                object.subscriberIds = [];
-                for (var j = 0; j < message.subscriberIds.length; ++j)
-                    object.subscriberIds[j] = message.subscriberIds[j];
+            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
+                object.createdMicros = message.createdMicros;
+            if (message.authorId != null && message.hasOwnProperty("authorId"))
+                object.authorId = message.authorId;
+            if (message.subscriberId && message.subscriberId.length) {
+                object.subscriberId = [];
+                for (var j = 0; j < message.subscriberId.length; ++j)
+                    object.subscriberId[j] = message.subscriberId[j];
             }
-            if (message.items && message.items.length) {
-                object.items = [];
-                for (var j = 0; j < message.items.length; ++j)
-                    object.items[j] = message.items[j];
+            if (message.itemId && message.itemId.length) {
+                object.itemId = [];
+                for (var j = 0; j < message.itemId.length; ++j)
+                    object.itemId[j] = message.itemId[j];
             }
             return object;
         };
@@ -557,7 +565,7 @@ $root.model = (function() {
          * @interface IItem
          * @property {string} [id] Item id
          * @property {string} [url] Item url
-         * @property {number|Long} [createdTsMicros] Item createdTsMicros
+         * @property {string} [createMicros] Item createMicros
          * @property {string} [authorId] Item authorId
          */
 
@@ -592,12 +600,12 @@ $root.model = (function() {
         Item.prototype.url = "";
 
         /**
-         * Item createdTsMicros.
-         * @member {number|Long}createdTsMicros
+         * Item createMicros.
+         * @member {string}createMicros
          * @memberof model.Item
          * @instance
          */
-        Item.prototype.createdTsMicros = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+        Item.prototype.createMicros = "";
 
         /**
          * Item authorId.
@@ -635,8 +643,8 @@ $root.model = (function() {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.url != null && message.hasOwnProperty("url"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.url);
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.createdTsMicros);
+            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.createMicros);
             if (message.authorId != null && message.hasOwnProperty("authorId"))
                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.authorId);
             return writer;
@@ -680,7 +688,7 @@ $root.model = (function() {
                     message.url = reader.string();
                     break;
                 case 3:
-                    message.createdTsMicros = reader.int64();
+                    message.createMicros = reader.string();
                     break;
                 case 4:
                     message.authorId = reader.string();
@@ -726,9 +734,9 @@ $root.model = (function() {
             if (message.url != null && message.hasOwnProperty("url"))
                 if (!$util.isString(message.url))
                     return "url: string expected";
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                if (!$util.isInteger(message.createdTsMicros) && !(message.createdTsMicros && $util.isInteger(message.createdTsMicros.low) && $util.isInteger(message.createdTsMicros.high)))
-                    return "createdTsMicros: integer|Long expected";
+            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
+                if (!$util.isString(message.createMicros))
+                    return "createMicros: string expected";
             if (message.authorId != null && message.hasOwnProperty("authorId"))
                 if (!$util.isString(message.authorId))
                     return "authorId: string expected";
@@ -751,15 +759,8 @@ $root.model = (function() {
                 message.id = String(object.id);
             if (object.url != null)
                 message.url = String(object.url);
-            if (object.createdTsMicros != null)
-                if ($util.Long)
-                    (message.createdTsMicros = $util.Long.fromValue(object.createdTsMicros)).unsigned = false;
-                else if (typeof object.createdTsMicros === "string")
-                    message.createdTsMicros = parseInt(object.createdTsMicros, 10);
-                else if (typeof object.createdTsMicros === "number")
-                    message.createdTsMicros = object.createdTsMicros;
-                else if (typeof object.createdTsMicros === "object")
-                    message.createdTsMicros = new $util.LongBits(object.createdTsMicros.low >>> 0, object.createdTsMicros.high >>> 0).toNumber();
+            if (object.createMicros != null)
+                message.createMicros = String(object.createMicros);
             if (object.authorId != null)
                 message.authorId = String(object.authorId);
             return message;
@@ -781,22 +782,15 @@ $root.model = (function() {
             if (options.defaults) {
                 object.id = "";
                 object.url = "";
-                if ($util.Long) {
-                    var long = new $util.Long(0, 0, false);
-                    object.createdTsMicros = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                } else
-                    object.createdTsMicros = options.longs === String ? "0" : 0;
+                object.createMicros = "";
                 object.authorId = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 object.id = message.id;
             if (message.url != null && message.hasOwnProperty("url"))
                 object.url = message.url;
-            if (message.createdTsMicros != null && message.hasOwnProperty("createdTsMicros"))
-                if (typeof message.createdTsMicros === "number")
-                    object.createdTsMicros = options.longs === String ? String(message.createdTsMicros) : message.createdTsMicros;
-                else
-                    object.createdTsMicros = options.longs === String ? $util.Long.prototype.toString.call(message.createdTsMicros) : options.longs === Number ? new $util.LongBits(message.createdTsMicros.low >>> 0, message.createdTsMicros.high >>> 0).toNumber() : message.createdTsMicros;
+            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
+                object.createMicros = message.createMicros;
             if (message.authorId != null && message.hasOwnProperty("authorId"))
                 object.authorId = message.authorId;
             return object;

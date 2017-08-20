@@ -15,14 +15,17 @@ export namespace model {
         /** Collection description */
         description?: string;
 
-        /** Collection createdTsMicros */
-        createdTsMicros?: (number|Long);
+        /** Collection createdMicros */
+        createdMicros?: string;
 
-        /** Collection subscriberIds */
-        subscriberIds?: string[];
+        /** Collection authorId */
+        authorId?: string;
 
-        /** Collection items */
-        items?: string[];
+        /** Collection subscriberId */
+        subscriberId?: string[];
+
+        /** Collection itemId */
+        itemId?: string[];
     }
 
     /** Represents a Collection. */
@@ -43,14 +46,17 @@ export namespace model {
         /** Collection description. */
         public description: string;
 
-        /** Collection createdTsMicros. */
-        public createdTsMicros: (number|Long);
+        /** Collection createdMicros. */
+        public createdMicros: string;
 
-        /** Collection subscriberIds. */
-        public subscriberIds: string[];
+        /** Collection authorId. */
+        public authorId: string;
 
-        /** Collection items. */
-        public items: string[];
+        /** Collection subscriberId. */
+        public subscriberId: string[];
+
+        /** Collection itemId. */
+        public itemId: string[];
 
         /**
          * Creates a new Collection instance using the specified properties.
@@ -222,8 +228,8 @@ export namespace model {
         /** Item url */
         url?: string;
 
-        /** Item createdTsMicros */
-        createdTsMicros?: (number|Long);
+        /** Item createMicros */
+        createMicros?: string;
 
         /** Item authorId */
         authorId?: string;
@@ -244,8 +250,8 @@ export namespace model {
         /** Item url. */
         public url: string;
 
-        /** Item createdTsMicros. */
-        public createdTsMicros: (number|Long);
+        /** Item createMicros. */
+        public createMicros: string;
 
         /** Item authorId. */
         public authorId: string;
