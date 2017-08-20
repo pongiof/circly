@@ -1,8 +1,10 @@
 swagger: "2.0"
 info:
-  version: "0.0.1"
-  title: Circly Backend
-host: localhost:10010
+  description: "Circly Google Cloud Endpoints API."
+  title: "Circly Endpoints"
+  version: "1.0.0"
+host: "circly-174919.appspot.com"
+
 basePath: /api/v1
 schemes:
   - https
@@ -27,8 +29,6 @@ paths:
     post:
       description: "Add a new collection"
       operationId: "AddCollection"
-      produces:
-        - application/json
       parameters:
         - in: body
           name: "collection"
@@ -38,10 +38,13 @@ paths:
             $ref: "#/definitions/model.Collection"
       responses:
         200:
-          description: "Sucessfull collection add"
+          description: "New collection created"
+          schema:
+            $ref: "#/definitions/model.Collection"
       x-swagger-router-controller: "AddCollection"
   /swagger:
     x-swagger-pipe: swagger_raw
+
 definitions:
   model.Collection:
     title: Collection
@@ -53,15 +56,15 @@ definitions:
         type: string
       description:
         type: string
-      created_ts_micros:
-        type: integer
-        minimum: -9007199254740991
-        maximum: 9007199254740991
-      subscriber_ids:
+      createdMicros:
+        type: string
+      authorId:
+        type: string
+      subscriberId:
         type: array
         items:
           type: string
-      items:
+      itemId:
         type: array
         items:
           type: string

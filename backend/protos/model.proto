@@ -7,9 +7,10 @@ message Collection {
     optional string id = 1;
     optional string name = 2;
     optional string description = 3;
-    optional int64 created_ts_micros = 4;
-    repeated string subscriber_ids = 5;
-    repeated string items = 6;
+    optional string createdMicros = 4;
+    optional string authorId = 5;
+    repeated string subscriberId = 6;
+    repeated string itemId = 7;
 }
 
 message User {
@@ -19,6 +20,6 @@ message User {
 message Item {
     optional string id = 1;
     optional string url = 2;
-    optional int64 created_ts_micros = 3;
-    optional string author_id = 4;
+    optional string createMicros = 3;
+    optional string authorId = 4;
 }
