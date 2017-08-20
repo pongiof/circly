@@ -1,6 +1,13 @@
 runtime: nodejs
 env: flex
 
+manual_scaling:
+  instances: 1
+resources:
+  cpu: .5
+  memory_gb: 0.9
+  disk_size_gb: 10
+
 endpoints_api_service:
   name: circly-174919.appspot.com
   config_id: 2017-07-31r3
