@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "@angular/material";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { SharedComponentsModule } from "../shared/components/shared-components.module"
 
@@ -22,7 +23,8 @@ import { MainComponent } from "./main.component";
         FlexLayoutModule,
         MaterialModule,
         MainRoutingModule,
-        SharedComponentsModule
+        SharedComponentsModule,
+        ReactiveFormsModule
     ],
 })
 export class MainModule { }

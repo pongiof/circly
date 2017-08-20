@@ -1,3 +1,17 @@
 <div [@fadeInAnimation] fxFill fxLayout="column" fxLayoutAlign="center center">
-    new list
+    <div><h3>Create a new collection</h3></div>
+    <br>
+    <br>
+    <form [formGroup]="collectionForm" novalidate>
+        <md-input-container class="input-full-width">
+            <input mdInput placeholder="Name" formControlName="name">
+        </md-input-container>
+        <md-input-container class="input-full-width">
+            <input mdInput placeholder="Description" formControlName="description">
+        </md-input-container>
+    </form>
+    <br>
+    <div>
+        <button md-raised-button [disabled]="collectionForm.status == 'INVALID'" (click)="onSubmit()" >Create</button>
+    </div>
 </div>
