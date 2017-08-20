@@ -10,9 +10,5 @@ module.exports = {
     root: 'dist',
     stripPrefix: 'dist/',
     navigateFallback: '/index.html',
-    navigateFallbackWhitelist: [ /^\/main\//, /^\/login/ ],
-    runtimeCaching: [{
-        urlPattern: https\:\/\/circly\-174919\.appspot\.com\/api\/,
-        handler: 'networkFirst'
-    }]
+    navigateFallbackWhitelist: [ /^\/main\//, /^\/login/ ]
 };
