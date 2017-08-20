@@ -19,6 +19,16 @@ export class AuthInterceptor implements HttpInterceptor {
                     .set("x-api-key", environment.api_key)
                     .set("Authorization", `Bearer ${this.authService.getCurrentToken()}`)}
             );
+        } else {
+            const jsonAuth = btoa(JSON.stringify({
+                "issuer": "local_dev",
+                "id": "francesco_dev",
+                "email" : "francesco_dev@pongetti.eu"
+            }));
+            req = req.clone(
+                {headers: req.headers
+                    .set("x-endpoint-api-userinfo", jsonAuth)}
+            );
         }
         return next.handle(req);
   }
