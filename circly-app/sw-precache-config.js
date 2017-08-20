@@ -12,7 +12,7 @@ module.exports = {
     navigateFallback: '/index.html',
     navigateFallbackWhitelist: [ /^\/main\//, /^\/login/ ],
     runtimeCaching: [{
-        urlPattern: /\/api\//,
+        urlPattern: https\:\/\/circly\-174919\.appspot\.com\/api\/,
         handler: 'networkFirst'
     }]
 };
