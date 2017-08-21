@@ -7,10 +7,7 @@ message Collection {
     optional string id = 1;
     optional string name = 2;
     optional string description = 3;
-    optional string createdMicros = 4;
-    optional string authorId = 5;
-    repeated string subscriberId = 6;
-    repeated string itemId = 7;
+    optional string createdTimestamp = 4;
 }
 
 message User {
@@ -20,6 +17,5 @@ message User {
 message Item {
     optional string id = 1;
     optional string url = 2;
-    optional string createMicros = 3;
-    optional string authorId = 4;
+    optional string createdTimestamp = 3;
 }

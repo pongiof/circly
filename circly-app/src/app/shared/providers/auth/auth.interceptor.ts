@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     .set("x-api-key", environment.api_key)
                     .set("Authorization", `Bearer ${this.authService.getCurrentToken()}`)}
             );
-        } else {
+        } else { // Dev fake credential passed to the server.
             const jsonAuth = btoa(JSON.stringify({
                 "issuer": "local_dev",
                 "id": "francesco_dev",

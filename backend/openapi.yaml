@@ -72,17 +72,21 @@ definitions:
         type: string
       description:
         type: string
-      createdMicros:
-        type: integer
-        minimum: -9007199254740991
-        maximum: 9007199254740991
-      authorId:
+      createdTimestamp:
         type: string
-      subscriberId:
-        type: array
-        items:
-          type: string
-      itemId:
-        type: array
-        items:
-          type: string
+  model.User:
+    title: User
+    type: object
+    properties:
+      id:
+        type: string
+  model.Item:
+    title: Item
+    type: object
+    properties:
+      id:
+        type: string
+      url:
+        type: string
+      createdTimestamp:
+        type: string

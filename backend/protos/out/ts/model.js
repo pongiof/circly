@@ -27,10 +27,7 @@ $root.model = (function() {
          * @property {string} [id] Collection id
          * @property {string} [name] Collection name
          * @property {string} [description] Collection description
-         * @property {string} [createdMicros] Collection createdMicros
-         * @property {string} [authorId] Collection authorId
-         * @property {Array.<string>} [subscriberId] Collection subscriberId
-         * @property {Array.<string>} [itemId] Collection itemId
+         * @property {string} [createdTimestamp] Collection createdTimestamp
          */
 
         /**
@@ -41,8 +38,6 @@ $root.model = (function() {
          * @param {model.ICollection=} [properties] Properties to set
          */
         function Collection(properties) {
-            this.subscriberId = [];
-            this.itemId = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -74,36 +69,12 @@ $root.model = (function() {
         Collection.prototype.description = "";
 
         /**
-         * Collection createdMicros.
-         * @member {string}createdMicros
+         * Collection createdTimestamp.
+         * @member {string}createdTimestamp
          * @memberof model.Collection
          * @instance
          */
-        Collection.prototype.createdMicros = "";
-
-        /**
-         * Collection authorId.
-         * @member {string}authorId
-         * @memberof model.Collection
-         * @instance
-         */
-        Collection.prototype.authorId = "";
-
-        /**
-         * Collection subscriberId.
-         * @member {Array.<string>}subscriberId
-         * @memberof model.Collection
-         * @instance
-         */
-        Collection.prototype.subscriberId = $util.emptyArray;
-
-        /**
-         * Collection itemId.
-         * @member {Array.<string>}itemId
-         * @memberof model.Collection
-         * @instance
-         */
-        Collection.prototype.itemId = $util.emptyArray;
+        Collection.prototype.createdTimestamp = "";
 
         /**
          * Creates a new Collection instance using the specified properties.
@@ -135,16 +106,8 @@ $root.model = (function() {
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
             if (message.description != null && message.hasOwnProperty("description"))
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.description);
-            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.createdMicros);
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                writer.uint32(/* id 5, wireType 2 =*/42).string(message.authorId);
-            if (message.subscriberId != null && message.subscriberId.length)
-                for (var i = 0; i < message.subscriberId.length; ++i)
-                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.subscriberId[i]);
-            if (message.itemId != null && message.itemId.length)
-                for (var i = 0; i < message.itemId.length; ++i)
-                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.itemId[i]);
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.createdTimestamp);
             return writer;
         };
 
@@ -189,20 +152,7 @@ $root.model = (function() {
                     message.description = reader.string();
                     break;
                 case 4:
-                    message.createdMicros = reader.string();
-                    break;
-                case 5:
-                    message.authorId = reader.string();
-                    break;
-                case 6:
-                    if (!(message.subscriberId && message.subscriberId.length))
-                        message.subscriberId = [];
-                    message.subscriberId.push(reader.string());
-                    break;
-                case 7:
-                    if (!(message.itemId && message.itemId.length))
-                        message.itemId = [];
-                    message.itemId.push(reader.string());
+                    message.createdTimestamp = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -248,26 +198,9 @@ $root.model = (function() {
             if (message.description != null && message.hasOwnProperty("description"))
                 if (!$util.isString(message.description))
                     return "description: string expected";
-            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
-                if (!$util.isString(message.createdMicros))
-                    return "createdMicros: string expected";
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                if (!$util.isString(message.authorId))
-                    return "authorId: string expected";
-            if (message.subscriberId != null && message.hasOwnProperty("subscriberId")) {
-                if (!Array.isArray(message.subscriberId))
-                    return "subscriberId: array expected";
-                for (var i = 0; i < message.subscriberId.length; ++i)
-                    if (!$util.isString(message.subscriberId[i]))
-                        return "subscriberId: string[] expected";
-            }
-            if (message.itemId != null && message.hasOwnProperty("itemId")) {
-                if (!Array.isArray(message.itemId))
-                    return "itemId: array expected";
-                for (var i = 0; i < message.itemId.length; ++i)
-                    if (!$util.isString(message.itemId[i]))
-                        return "itemId: string[] expected";
-            }
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                if (!$util.isString(message.createdTimestamp))
+                    return "createdTimestamp: string expected";
             return null;
         };
 
@@ -289,24 +222,8 @@ $root.model = (function() {
                 message.name = String(object.name);
             if (object.description != null)
                 message.description = String(object.description);
-            if (object.createdMicros != null)
-                message.createdMicros = String(object.createdMicros);
-            if (object.authorId != null)
-                message.authorId = String(object.authorId);
-            if (object.subscriberId) {
-                if (!Array.isArray(object.subscriberId))
-                    throw TypeError(".model.Collection.subscriberId: array expected");
-                message.subscriberId = [];
-                for (var i = 0; i < object.subscriberId.length; ++i)
-                    message.subscriberId[i] = String(object.subscriberId[i]);
-            }
-            if (object.itemId) {
-                if (!Array.isArray(object.itemId))
-                    throw TypeError(".model.Collection.itemId: array expected");
-                message.itemId = [];
-                for (var i = 0; i < object.itemId.length; ++i)
-                    message.itemId[i] = String(object.itemId[i]);
-            }
+            if (object.createdTimestamp != null)
+                message.createdTimestamp = String(object.createdTimestamp);
             return message;
         };
 
@@ -323,16 +240,11 @@ $root.model = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults) {
-                object.subscriberId = [];
-                object.itemId = [];
-            }
             if (options.defaults) {
                 object.id = "";
                 object.name = "";
                 object.description = "";
-                object.createdMicros = "";
-                object.authorId = "";
+                object.createdTimestamp = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 object.id = message.id;
@@ -340,20 +252,8 @@ $root.model = (function() {
                 object.name = message.name;
             if (message.description != null && message.hasOwnProperty("description"))
                 object.description = message.description;
-            if (message.createdMicros != null && message.hasOwnProperty("createdMicros"))
-                object.createdMicros = message.createdMicros;
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                object.authorId = message.authorId;
-            if (message.subscriberId && message.subscriberId.length) {
-                object.subscriberId = [];
-                for (var j = 0; j < message.subscriberId.length; ++j)
-                    object.subscriberId[j] = message.subscriberId[j];
-            }
-            if (message.itemId && message.itemId.length) {
-                object.itemId = [];
-                for (var j = 0; j < message.itemId.length; ++j)
-                    object.itemId[j] = message.itemId[j];
-            }
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                object.createdTimestamp = message.createdTimestamp;
             return object;
         };
 
@@ -565,8 +465,7 @@ $root.model = (function() {
          * @interface IItem
          * @property {string} [id] Item id
          * @property {string} [url] Item url
-         * @property {string} [createMicros] Item createMicros
-         * @property {string} [authorId] Item authorId
+         * @property {string} [createdTimestamp] Item createdTimestamp
          */
 
         /**
@@ -600,20 +499,12 @@ $root.model = (function() {
         Item.prototype.url = "";
 
         /**
-         * Item createMicros.
-         * @member {string}createMicros
+         * Item createdTimestamp.
+         * @member {string}createdTimestamp
          * @memberof model.Item
          * @instance
          */
-        Item.prototype.createMicros = "";
-
-        /**
-         * Item authorId.
-         * @member {string}authorId
-         * @memberof model.Item
-         * @instance
-         */
-        Item.prototype.authorId = "";
+        Item.prototype.createdTimestamp = "";
 
         /**
          * Creates a new Item instance using the specified properties.
@@ -643,10 +534,8 @@ $root.model = (function() {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
             if (message.url != null && message.hasOwnProperty("url"))
                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.url);
-            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
-                writer.uint32(/* id 3, wireType 2 =*/26).string(message.createMicros);
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.authorId);
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.createdTimestamp);
             return writer;
         };
 
@@ -688,10 +577,7 @@ $root.model = (function() {
                     message.url = reader.string();
                     break;
                 case 3:
-                    message.createMicros = reader.string();
-                    break;
-                case 4:
-                    message.authorId = reader.string();
+                    message.createdTimestamp = reader.string();
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -734,12 +620,9 @@ $root.model = (function() {
             if (message.url != null && message.hasOwnProperty("url"))
                 if (!$util.isString(message.url))
                     return "url: string expected";
-            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
-                if (!$util.isString(message.createMicros))
-                    return "createMicros: string expected";
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                if (!$util.isString(message.authorId))
-                    return "authorId: string expected";
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                if (!$util.isString(message.createdTimestamp))
+                    return "createdTimestamp: string expected";
             return null;
         };
 
@@ -759,10 +642,8 @@ $root.model = (function() {
                 message.id = String(object.id);
             if (object.url != null)
                 message.url = String(object.url);
-            if (object.createMicros != null)
-                message.createMicros = String(object.createMicros);
-            if (object.authorId != null)
-                message.authorId = String(object.authorId);
+            if (object.createdTimestamp != null)
+                message.createdTimestamp = String(object.createdTimestamp);
             return message;
         };
 
@@ -782,17 +663,14 @@ $root.model = (function() {
             if (options.defaults) {
                 object.id = "";
                 object.url = "";
-                object.createMicros = "";
-                object.authorId = "";
+                object.createdTimestamp = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
                 object.id = message.id;
             if (message.url != null && message.hasOwnProperty("url"))
                 object.url = message.url;
-            if (message.createMicros != null && message.hasOwnProperty("createMicros"))
-                object.createMicros = message.createMicros;
-            if (message.authorId != null && message.hasOwnProperty("authorId"))
-                object.authorId = message.authorId;
+            if (message.createdTimestamp != null && message.hasOwnProperty("createdTimestamp"))
+                object.createdTimestamp = message.createdTimestamp;
             return object;
         };
 

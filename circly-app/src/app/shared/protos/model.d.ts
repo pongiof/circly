@@ -15,17 +15,8 @@ export namespace model {
         /** Collection description */
         description?: string;
 
-        /** Collection createdMicros */
-        createdMicros?: string;
-
-        /** Collection authorId */
-        authorId?: string;
-
-        /** Collection subscriberId */
-        subscriberId?: string[];
-
-        /** Collection itemId */
-        itemId?: string[];
+        /** Collection createdTimestamp */
+        createdTimestamp?: string;
     }
 
     /** Represents a Collection. */
@@ -46,17 +37,8 @@ export namespace model {
         /** Collection description. */
         public description: string;
 
-        /** Collection createdMicros. */
-        public createdMicros: string;
-
-        /** Collection authorId. */
-        public authorId: string;
-
-        /** Collection subscriberId. */
-        public subscriberId: string[];
-
-        /** Collection itemId. */
-        public itemId: string[];
+        /** Collection createdTimestamp. */
+        public createdTimestamp: string;
 
         /**
          * Creates a new Collection instance using the specified properties.
@@ -228,11 +210,8 @@ export namespace model {
         /** Item url */
         url?: string;
 
-        /** Item createMicros */
-        createMicros?: string;
-
-        /** Item authorId */
-        authorId?: string;
+        /** Item createdTimestamp */
+        createdTimestamp?: string;
     }
 
     /** Represents an Item. */
@@ -250,11 +229,8 @@ export namespace model {
         /** Item url. */
         public url: string;
 
-        /** Item createMicros. */
-        public createMicros: string;
-
-        /** Item authorId. */
-        public authorId: string;
+        /** Item createdTimestamp. */
+        public createdTimestamp: string;
 
         /**
          * Creates a new Item instance using the specified properties.
