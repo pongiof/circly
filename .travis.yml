@@ -18,15 +18,15 @@ script:
 - npm run precache
 after_success:
 - firebase deploy --token $FIREBASE_TOKEN --non-interactive
-- cd ../backend/
-- gcloud auth activate-service-account --key-file=../circly-7595d1781612.json
-- gcloud service-management deploy --force --quiet openapi.yaml
 - cd ..
 deploy:
   provider: gae
   keyfile: circly-7595d1781612.json
   project: circly-174919
   config: backend/app.yaml
+after_deploy:
+- gcloud auth activate-service-account --key-file=backend/circly-7595d1781612.json
+- gcloud service-management deploy --force --quiet backend/openapi.yaml
 notifications:
   email:
     on_failure: change
