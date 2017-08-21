@@ -21,7 +21,7 @@ after_success:
 - cd ../backend/
 - gcloud auth activate-service-account --key-file=../circly-7595d1781612.json
 - gcloud service-management deploy --force --quiet openapi.yaml
--- cd ..
+- cd ..
 deploy:
   provider: gae
   keyfile: circly-7595d1781612.json
