@@ -7,16 +7,12 @@ branches:
   - master
 before_install:
 - openssl aes-256-cbc -K $encrypted_7e2939524d35_key -iv $encrypted_7e2939524d35_iv
-  -in circly-7595d1781612.json.enc -out circly-7595d1781612.json -d
-- cd circly-app
-cache:
-  directories:
-    - "$HOME/google-cloud-sdk/"
+-in circly-7595d1781612.json.enc -out circly-7595d1781612.json -d
 before_script:
- - gcloud version || true
- - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
- - source /home/travis/google-cloud-sdk/path.bash.inc
- - gcloud version
+- gcloud version || true
+- export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com
+- source /home/travis/google-cloud-sdk/path.bash.inc
+- gcloud version
 - gcloud auth activate-service-account --key-file=circly-7595d1781612.json
 - gcloud service-management deploy --force --quiet backend/openapi.yaml
 - npm install -g firebase-tools
