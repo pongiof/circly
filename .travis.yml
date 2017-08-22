@@ -17,6 +17,7 @@ script:
 - gcloud config set project circly-174919
 - gcloud auth activate-service-account --key-file=circly-7595d1781612.json
 - gcloud service-management deploy --force --quiet backend/openapi.yaml
+- cd circly-app
 - ng build --prod --env=prod
 - npm run precache
 after_success:
