@@ -12,12 +12,7 @@ before_script:
 - npm install -g @angular/cli
 - npm install -g sw-precache
 script:
-- export CLOUDSDK_CORE_DISABLE_PROMPTS=1
-- curl https://sdk.cloud.google.com | bash
-- gcloud config set project circly-174919
-- gcloud auth activate-service-account --key-file=circly-7595d1781612.json
-- gcloud service-management deploy --force --quiet backend/openapi.yaml
-- cd circly-app
+- cd circly-app/
 - ng build --prod --env=prod
 - npm run precache
 after_success:
