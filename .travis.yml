@@ -9,7 +9,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_7e2939524d35_key -iv $encrypted_7e2939524d35_iv -in circly-7595d1781612.json.enc -out circly-7595d1781612.json -d
 script:
 - export CLOUDSDK_CORE_DISABLE_PROMPTS=1
-- curl https://sdk.cloud.google.com | bash
+- curl https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-167.0.0-linux-x86_64.tar.gz > gcloud.tar.gz
+- tar zxvf gcloud.tar.gz
+- ./google-cloud-sdk/install.sh
 - gcloud config set project circly-174919
 - gcloud auth activate-service-account --key-file=circly-7595d1781612.json
 - gcloud service-management deploy --force --quiet backend/openapi.yaml
