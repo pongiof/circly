@@ -6,9 +6,10 @@ branches:
   only:
   - master
 before_install:
-- openssl aes-256-cbc -K $encrypted_7e2939524d35_key -iv $encrypted_7e2939524d35_iv -in circly-7595d1781612.json.enc -out circly-7595d1781612.json -d
-before_script:
+- openssl aes-256-cbc -K $encrypted_7e2939524d35_key -iv $encrypted_7e2939524d35_iv
+  -in circly-7595d1781612.json.enc -out circly-7595d1781612.json -d
 - cd circly-app
+before_script:
 - npm install -g firebase-tools
 - npm install -g @angular/cli
 - npm install -g sw-precache
