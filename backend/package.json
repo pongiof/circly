@@ -8,11 +8,11 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
-    "@google-cloud/nodejs-repo-tools": "^1.4.15",
-    "@types/long": "^3.0.31",
-    "@types/node": "^8.0.17",
+    "@google-cloud/nodejs-repo-tools": "^1.4.17",
+    "@types/long": "^3.0.32",
+    "@types/node": "^8.0.25",
     "cors": "^2.8.4",
-    "express": "^4.12.3",
+    "express": "^4.15.4",
     "protobufjs": "^6.8.0",
     "swagger-express-mw": "^0.1.0"
   },
